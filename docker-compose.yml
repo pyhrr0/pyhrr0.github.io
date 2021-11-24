@@ -1,0 +1,10 @@
+version: "3"
+services:
+  hugo:
+    container_name: hugo
+    image: deluca/hugo:latest
+    ports:
+      - 1313:1313
+    volumes:
+      - .:/site
+    command: "server --bind=0.0.0.0 --buildDrafts --minify"

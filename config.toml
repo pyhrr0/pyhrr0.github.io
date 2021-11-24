@@ -1,0 +1,38 @@
+baseURL = "https://pyhrr0.github.io/"
+languageCode = "en-us"
+title = ""
+theme = "anatole"
+
+[params]
+title = "Pyhrr0"
+author = "pyhrr0"
+description = "Yet another inquisitive creature."
+profilePicture = "images/logo.jpg"
+contentRatio = 0.7
+contactFormAction = "https://getform.io/f/d4cb0a53-03f7-4b02-9997-5e94ab89fac9"
+
+[[params.socialIcons]]
+icon = "fab fa-github"
+title = "GitHub"
+url = "https://github.com/pyhrr0"
+
+[[params.socialIcons]]
+icon = "fab fa-twitter"
+title = "Twitter"
+url = "https://twitter.com/pyhrr0"
+
+[[params.socialIcons]]
+icon = "fab fa-linkedin"
+title = "Linkedin"
+url = "https://linkedin.com/in/5f-42c-21f-749f2a39c"
+
+[menu]
+  [[menu.main]]
+  name = "Home"
+  weight = 100
+  url = "/"
+
+  [[menu.main]]
+  name = "Contact"
+  weight = 200
+  url = "/contact"
