@@ -10,10 +10,9 @@ My specialty is in back-end development, system administration and offensive sec
 
 This blog serves as a scratchpad, and will cover subjects related to:
 
-* Software Development
-* Hacking
-* Reverse Engineering
+* Technology
 * Entrepreneurship
+* Empirical research
 * ...
 
 Please feel free to contact me for remarks or questions.
