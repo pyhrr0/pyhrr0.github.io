@@ -1,5 +1,5 @@
 ---
-title: How to nail job interviews.
+title: How to nail job interviews
 date: 2021-11-29T13:33:37Z
 ---
 
