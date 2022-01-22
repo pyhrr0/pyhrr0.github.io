@@ -2,7 +2,7 @@
 <title>
 pyhrr0
 </title>
-<meta charset=utf-8><meta name=generator content="Hugo 0.90.0"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta charset=utf-8><meta name=generator content="Hugo 0.92.0"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name=description content="
       Yet another inquisitive creature.
 
@@ -92,7 +92,7 @@ animated fadeInDown">
 <li class=footer__item>
 &copy;
 pyhrr0
-2021
+2022
 </li>
 </ul>
 </div>
@@ -105,6 +105,31 @@ pyhrr0
 <div class="post
 animated fadeInDown">
 <div class="post-title post-content">
+</div>
+</div>
+<div class="post
+animated fadeInDown">
+<div class=post-title>
+<h3><a href=/posts/arch-fde-btrfs-efi/>Arch Linux with FDE, btrfs and EFI support</a></h3>
+</div>
+<div class=post-content>
+<div class=p_part>
+<p>
+Disk preparations Create two partitions (for /boot and /):
+# fdisk /dev/sda g - create a new empty GPT partition table n - add a new partition t - change a partition type Create / initialize usable LUKS container (and accompanying volumes):
+# cryptsetup luksFormat /dev/sda2 # cryptsetup open /dev/sda2 luks_container # pvcreate /dev/mapper/luks_container # vgcreate encrypted /dev/mapper/luks_container # lvcreate -l 100%FREE encrypted -n rootfs Create filesystems and mount partitions:
+</p>
+</div>
+</div>
+<div class=post-footer>
+<div class=meta>
+<div class=info>
+<em class="fas fa-calendar-day"></em>
+<span class=date>
+Fri, Jan 21, 2022
+</span>
+</div>
+</div>
 </div>
 </div>
 <div class="post
@@ -169,7 +194,7 @@ Mon, Nov 29, 2021
 <li class=footer__item>
 &copy;
 pyhrr0
-2021
+2022
 </li>
 </ul>
 </div>
