@@ -4,7 +4,7 @@ date: 2021-11-29T13:33:37Z
 ---
 
 Stage 1: Introduction
---------------------
+---------------------
 Requirements:
   - Have faith in yourself.
   - Remember that all parties involved, are mere human beings.
@@ -19,7 +19,7 @@ Things to share:
 Goal: try to find common ground.
 
 Stage 2: Questionnaire
----------------------
+----------------------
 Requirements:
   - Have a clear image of what drives you / you want to achieve (in general).
   - Know your strenghts / weaknesses.
@@ -41,13 +41,13 @@ Possible questions to ask:
 Goal: mutual expectation management.
 
 Stage 3: Epilogue
----------------------
+-----------------
 - Ask if the client has any remaining questions.
 - Set appointments in terms of possible follow ups.
 - Thank the client for their time.
 
 Appendix
----------------------
+--------
 - Always be honest.
 - Soft-skills are at least as important as hard-skills.
 - Relax and enjoy the conversation.
