@@ -4,12 +4,12 @@ date: 2021-12-08T13:33:37Z
 ---
 
 The aim of this post is to provide a brief summary, of the implications that come with
-the adoption of Bitcoin's recent Taproot softfork. Its aim is to optimize Bitcoin's
+the adoption of Bitcoin's recent Taproot softfork. Its aim is to optimize Bitcoin's  
 scalability, privacy, and smart contract functionality.
 
 I got to learn about the nitty gritty details that are involved with the Bitcoin
-protocol whilst working for Bitonic, a BTCEUR exchange with proper moral values.
-Do note, I can't stress enough the importance of the DYOR (Do Your Own Research) idiom.
+protocol whilst working for Bitonic, a BTCEUR exchange with proper moral values. Do note,  
+I can't stress enough the importance of the DYOR (Do Your Own Research) idiom.
 
 The softfork introduces a new address type (P2TR), that aims to:
 

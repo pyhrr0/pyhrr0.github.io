@@ -8,7 +8,7 @@ title = "Pyhrr0"
 author = "pyhrr0"
 description = "Yet another inquisitive creature."
 profilePicture = "images/logo.jpg"
-contentRatio = 0.6
+contentRatio = 0.7
 contactFormAction = "https://getform.io/f/d4cb0a53-03f7-4b02-9997-5e94ab89fac9"
 
 [[params.socialIcons]]
