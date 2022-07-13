@@ -7,4 +7,4 @@ services:
       - 1313:1313
     volumes:
       - .:/site
-    command: "server --bind=0.0.0.0 --buildDrafts --minify"
+    command: "server --bind=0.0.0.0 --buildDrafts --minify --verbose"
