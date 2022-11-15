@@ -18,9 +18,9 @@ title = "GitHub"
 url = "https://github.com/pyhrr0"
 
 [[params.socialIcons]]
-icon = "fab fa-twitter"
-title = "Twitter"
-url = "https://twitter.com/pyhrr0"
+icon = "fab fa-gitlab"
+title = "Gitlab"
+url = "https://gitlab.com/pyhrr0"
 
 [[params.socialIcons]]
 icon = "fab fa-linkedin"
