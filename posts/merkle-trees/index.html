@@ -1,0 +1,160 @@
+<!doctype html><html dir=ltr lang=en data-theme><head><title>pyhrr0
+|
+Datastructures: Merkle tree</title><meta charset=utf-8><meta name=generator content="Hugo 0.110.0"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name=description content="
+      Yet another inquisitive creature.
+
+
+    "><link rel=stylesheet href=/css/main.min.beb4ded4d3d7b57eaaf7abaedb95860a68a8e8c2320b688e547ba30ead224a19.css integrity="sha256-vrTe1NPXtX6q96uu25WGCmio6MIyC2iOVHujDq0iShk=" crossorigin=anonymous type=text/css><link rel=stylesheet href=/css/markupHighlight.min.058b31f17db60602cc415fd63b0427e7932fbf35c70d8e341a4c39385f5f6f3e.css integrity="sha256-BYsx8X22BgLMQV/WOwQn55MvvzXHDY40Gkw5OF9fbz4=" crossorigin=anonymous type=text/css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin=anonymous><link rel="shortcut icon" href=/favicon.ico type=image/x-icon><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=canonical href=/posts/merkle-trees/><script type=text/javascript src=/js/anatole-header.min.d0408165d31a17f17bba83038bf54e86121f85021bdf936382e636f0f77a952f.js integrity="sha256-0ECBZdMaF/F7uoMDi/VOhhIfhQIb35NjguY28Pd6lS8=" crossorigin=anonymous></script>
+<script type=text/javascript src=/js/anatole-theme-switcher.min.ea8ebe268922ef9849261a1312cd65b640595e65251ce4c00534a176afd1ac0c.js integrity="sha256-6o6+Joki75hJJhoTEs1ltkBZXmUlHOTABTShdq/RrAw=" crossorigin=anonymous></script><meta name=twitter:card content="summary"><meta name=twitter:title content="Datastructures: Merkle tree"><meta name=twitter:description content="Summary Merkle trees (aka hash trees) are tree-like datastructures, that separate data validation from the the data itself. These trees consist of the following items:
+Leaves (aka outer nodes aka leaf node) Data objects, that are labelled with: hash(associated_data). Branches (aka inner nodes aka inodes aka non-leaf node) Data objects, that are labelled with: hash(concatenate(child_node_hashes)). ┌──────────┐ │ H7 │ Merkle root │ H(H5|H6) │ ┌────────┴──────────┴──────────┐ │ │ │ │ ┌────┴─────┐ ┌─────┴────┐ │ H5 │ │ H6 │ Branches │ H(H1|H2) │ │ H(H3|H4) │ └─┬─────┬──┘ └─┬──────┬─┘ │ │ │ │ ┌─────────┴┐ ┌┴─────────┐ ┌────────┴─┐ ┌─┴────────┐ │ H1 │ │ H2 │ │ H3 │ │ H4 │ Leaves │ H(A1) │ │ H(A2) │ │ H(A3) │ │ H(A4) │ └───┬──────┘ └────┬─────┘ └────┬─────┘ └────┬─────┘ │ │ │ │ A1 A2 A3 A4 Data Benefits They provide an efficient way of proving the integrity and validity of data."><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","articleSection":"posts","name":"Datastructures: Merkle tree","headline":"Datastructures: Merkle tree","alternativeHeadline":"","description":"
+      
+        Summary Merkle trees (aka hash trees) are tree-like datastructures, that separate data validation from the the data itself. These trees consist of the following items:\nLeaves (aka outer nodes aka leaf node) Data objects, that are labelled with: hash(associated_data). Branches (aka inner nodes aka inodes aka non-leaf node) Data objects, that are labelled with: hash(concatenate(child_node_hashes)). ┌──────────┐ │ H7 │ Merkle root │ H(H5|H6) │ ┌────────┴──────────┴──────────┐ │ │ │ │ ┌────┴─────┐ ┌─────┴────┐ │ H5 │ │ H6 │ Branches │ H(H1|H2) │ │ H(H3|H4) │ └─┬─────┬──┘ └─┬──────┬─┘ │ │ │ │ ┌─────────┴┐ ┌┴─────────┐ ┌────────┴─┐ ┌─┴────────┐ │ H1 │ │ H2 │ │ H3 │ │ H4 │ Leaves │ H(A1) │ │ H(A2) │ │ H(A3) │ │ H(A4) │ └───┬──────┘ └────┬─────┘ └────┬─────┘ └────┬─────┘ │ │ │ │ A1 A2 A3 A4 Data Benefits They provide an efficient way of proving the integrity and validity of data.
+
+
+      
+
+
+    ","inLanguage":"en-us","isFamilyFriendly":"true","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/pyhrr0.github.io\/posts\/merkle-trees\/"},"author":{"@type":"Person","name":"pyhrr0"},"creator":{"@type":"Person","name":"pyhrr0"},"accountablePerson":{"@type":"Person","name":"pyhrr0"},"copyrightHolder":{"@type":"Person","name":"pyhrr0"},"copyrightYear":"2022","dateCreated":"2022-07-12T13:33:37.00Z","datePublished":"2022-07-12T13:33:37.00Z","dateModified":"2022-07-12T13:33:37.00Z","publisher":{"@type":"Organization","name":"pyhrr0","url":"https://pyhrr0.github.io/","logo":{"@type":"ImageObject","url":"https:\/\/pyhrr0.github.io\/favicon-32x32.png","width":"32","height":"32"}},"image":[],"url":"https:\/\/pyhrr0.github.io\/posts\/merkle-trees\/","wordCount":"501","genre":[],"keywords":[]}</script></head><body><header><div class="page-top
+animated fadeInDown"><a role=button class=navbar-burger data-target=navMenu aria-label=menu aria-expanded=false><span aria-hidden=true></span>
+<span aria-hidden=true></span>
+<span aria-hidden=true></span></a><nav><ul class=nav__list id=navMenu><div class=nav__links><li><a href=/ title>Home</a></li><li><a href=/posts title>Posts</a></li><li><a href=/cv title>Resume</a></li><li><a href=/contact title>Contact</a></li></div><ul><li><a class=theme-switch title="Switch Theme"><i class="fas fa-adjust fa-fw" aria-hidden=true></i></a></li></ul></ul></nav></div></header><div class=wrapper><aside><div class="sidebar
+animated fadeInDown"><div class=sidebar__content><div class=logo-title><div class=title><img src=/images/logo.jpg alt="profile picture"><h3 title><a href=/>Pyhrr0</a></h3><div class=description><p>Yet another inquisitive creature.</p></div></div></div><ul class=social-links><li><a href=https://github.com/pyhrr0 rel=me aria-label=GitHub title=GitHub><i class="fab fa-github fa-2x" aria-hidden=true></i></a></li><li><a href=https://gitlab.com/pyhrr0 rel=me aria-label=Gitlab title=Gitlab><i class="fab fa-gitlab fa-2x" aria-hidden=true></i></a></li><li><a href=https://linkedin.com/in/5f-42c-21f-749f2a39c rel=me aria-label=Linkedin title=Linkedin><i class="fab fa-linkedin fa-2x" aria-hidden=true></i></a></li></ul></div><footer class="footer footer--sidebar"><div class=by_farbox><ul class=footer__list><li class=footer__item>&copy;
+pyhrr0
+2023</li></ul></div></footer><script type=text/javascript src=/js/medium-zoom.min.44288fd315b6cda68c1f4743caad56535c0f81a5b5a672f385e82b3896575c1d.js integrity="sha256-RCiP0xW2zaaMH0dDyq1WU1wPgaW1pnLzhegrOJZXXB0=" crossorigin=anonymous></script></div></aside><main><div class=autopagerize_page_element><div class=content><div class="post
+animated fadeInDown"><div class=post-content><div class=post-title><h1>Datastructures: Merkle tree</h1></div><h2 id=summary>Summary</h2><p>Merkle trees (aka hash trees) are tree-like datastructures, that separate data
+validation from the the data itself. These trees consist of the following items:</p><ul><li>Leaves (aka outer nodes aka leaf node)<ul><li>Data objects, that are labelled with: hash(associated_data).</li></ul></li><li>Branches (aka inner nodes aka inodes aka non-leaf node)<ul><li>Data objects, that are labelled with: hash(concatenate(child_node_hashes)).</li></ul></li></ul><pre tabindex=0><code>                      ┌──────────┐
+                      │    H7    │                              Merkle root
+                      │ H(H5|H6) │
+             ┌────────┴──────────┴──────────┐
+             │                              │
+             │                              │
+        ┌────┴─────┐                  ┌─────┴────┐
+        │    H5    │                  │    H6    │              Branches
+        │ H(H1|H2) │                  │ H(H3|H4) │
+        └─┬─────┬──┘                  └─┬──────┬─┘
+          │     │                       │      │
+┌─────────┴┐   ┌┴─────────┐    ┌────────┴─┐  ┌─┴────────┐
+│   H1     │   │    H2    │    │    H3    │  │    H4    │       Leaves
+│  H(A1)   │   │   H(A2)  │    │   H(A3)  │  │   H(A4)  │
+└───┬──────┘   └────┬─────┘    └────┬─────┘  └────┬─────┘
+    │               │               │             │
+    A1              A2              A3            A4            Data
+</code></pre><h2 id=benefits>Benefits</h2><ul><li>They provide an efficient way of proving the integrity and validity of data. Even
+a small tamper of data will result in a completely different hash.</li><li>Their proofs only require tiny amounts of information to be transmitted across
+networks. They separate the validation of data from the data itself.</li></ul><h2 id=implementation>Implementation</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=display:flex><span><span style=color:#66d9ef>use</span> sha2::Digest;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>pub</span> <span style=color:#66d9ef>type</span> <span style=color:#a6e22e>Data</span> <span style=color:#f92672>=</span> Vec<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>u8</span><span style=color:#f92672>&gt;</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>pub</span> <span style=color:#66d9ef>type</span> <span style=color:#a6e22e>Hash</span> <span style=color:#f92672>=</span> Vec<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>u8</span><span style=color:#f92672>&gt;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>hash_data</span>(data: <span style=color:#66d9ef>&amp;</span><span style=color:#a6e22e>Data</span>) -&gt; <span style=color:#a6e22e>Hash</span> {
+</span></span><span style=display:flex><span>    sha2::Sha256::digest(data).to_vec()
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>hash_concat</span>(h1: <span style=color:#66d9ef>&amp;</span><span style=color:#a6e22e>Hash</span>, h2: <span style=color:#66d9ef>&amp;</span><span style=color:#a6e22e>Hash</span>) -&gt; <span style=color:#a6e22e>Hash</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> h3 <span style=color:#f92672>=</span> h1.iter().chain(h2).copied().collect();
+</span></span><span style=display:flex><span>    hash_data(<span style=color:#f92672>&amp;</span>h3)
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#[derive(Clone)]</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>pub</span> <span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>TreeNode</span> {
+</span></span><span style=display:flex><span>    left: Option<span style=color:#f92672>&lt;</span>Box<span style=color:#f92672>&lt;</span>TreeNode<span style=color:#f92672>&gt;&gt;</span>,
+</span></span><span style=display:flex><span>    right: Option<span style=color:#f92672>&lt;</span>Box<span style=color:#f92672>&lt;</span>TreeNode<span style=color:#f92672>&gt;&gt;</span>,
+</span></span><span style=display:flex><span>    value: <span style=color:#a6e22e>Data</span>,
+</span></span><span style=display:flex><span>    digest: <span style=color:#a6e22e>Hash</span>,
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>impl</span> TreeNode {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>new</span>(value: <span style=color:#66d9ef>&amp;</span><span style=color:#a6e22e>Data</span>) -&gt; <span style=color:#a6e22e>Self</span> {
+</span></span><span style=display:flex><span>        Self {
+</span></span><span style=display:flex><span>            left: None,
+</span></span><span style=display:flex><span>            right: None,
+</span></span><span style=display:flex><span>            value: <span style=color:#a6e22e>value</span>.to_owned(),
+</span></span><span style=display:flex><span>            digest: <span style=color:#a6e22e>hash_data</span>(value),
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>pub</span> <span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>MerkleTree</span> {
+</span></span><span style=display:flex><span>    root: Option<span style=color:#f92672>&lt;</span>TreeNode<span style=color:#f92672>&gt;</span>,
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>impl</span> MerkleTree {
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>/// Constructs a Merkle tree from given input data
+</span></span></span><span style=display:flex><span><span style=color:#e6db74></span>    <span style=color:#66d9ef>pub</span> <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>construct</span>(input: <span style=color:#66d9ef>&amp;</span>[Data]) -&gt; <span style=color:#a6e22e>MerkleTree</span> {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>let</span> <span style=color:#66d9ef>mut</span> nodes <span style=color:#f92672>=</span> vec![];
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>for</span> leaf <span style=color:#66d9ef>in</span> input.iter() {
+</span></span><span style=display:flex><span>            nodes.push(TreeNode::new(leaf))
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>while</span> nodes.len() <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>1</span> {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>let</span> <span style=color:#66d9ef>mut</span> buf <span style=color:#f92672>=</span> vec![];
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>for</span> i <span style=color:#66d9ef>in</span> (<span style=color:#ae81ff>0</span><span style=color:#f92672>..</span>nodes.len()).step_by(<span style=color:#ae81ff>2</span>) {
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>let</span> left_node <span style=color:#f92672>=</span> <span style=color:#f92672>&amp;</span>nodes[i];
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>let</span> right_node;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>if</span> i <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span> <span style=color:#f92672>&lt;</span> nodes.len() {
+</span></span><span style=display:flex><span>                    right_node <span style=color:#f92672>=</span> nodes[i <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>].clone();
+</span></span><span style=display:flex><span>                } <span style=color:#66d9ef>else</span> {
+</span></span><span style=display:flex><span>                    buf.push(nodes[i].clone());
+</span></span><span style=display:flex><span>                    <span style=color:#66d9ef>break</span>;
+</span></span><span style=display:flex><span>                }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>let</span> digest <span style=color:#f92672>=</span> hash_concat(<span style=color:#f92672>&amp;</span>left_node.value, <span style=color:#f92672>&amp;</span>right_node.value);
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>let</span> <span style=color:#66d9ef>mut</span> parent <span style=color:#f92672>=</span> TreeNode::new(<span style=color:#f92672>&amp;</span>digest);
+</span></span><span style=display:flex><span>                parent.left <span style=color:#f92672>=</span> Some(Box::new(left_node.clone()));
+</span></span><span style=display:flex><span>                parent.right <span style=color:#f92672>=</span> Some(Box::new(right_node));
+</span></span><span style=display:flex><span>                buf.push(parent);
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>            nodes <span style=color:#f92672>=</span> buf;
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>let</span> <span style=color:#66d9ef>mut</span> root <span style=color:#f92672>=</span> None;
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> <span style=color:#f92672>!</span>nodes.is_empty() {
+</span></span><span style=display:flex><span>            root <span style=color:#f92672>=</span> Some(nodes.remove(<span style=color:#ae81ff>0</span>))
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        MerkleTree { root: <span style=color:#a6e22e>root</span> }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>/// Verifies that the given input data produces the given root hash
+</span></span></span><span style=display:flex><span><span style=color:#e6db74></span>    <span style=color:#66d9ef>pub</span> <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>verify</span>(input: <span style=color:#66d9ef>&amp;</span>[Data], root_hash: <span style=color:#66d9ef>&amp;</span><span style=color:#a6e22e>Hash</span>) -&gt; <span style=color:#66d9ef>bool</span> {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>let</span> tree <span style=color:#f92672>=</span> Self::construct(input);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>match</span> tree.root {
+</span></span><span style=display:flex><span>            Some(root_node) <span style=color:#f92672>=&gt;</span> <span style=color:#f92672>&amp;</span>root_node.digest <span style=color:#f92672>==</span> root_hash,
+</span></span><span style=display:flex><span>            None <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>false</span>,
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#[cfg(test)]</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>mod</span> tests {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>use</span> <span style=color:#66d9ef>super</span>::<span style=color:#f92672>*</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>#[test]</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>test_construct_empty_tree</span>() {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>let</span> input <span style=color:#f92672>=</span> [];
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>let</span> tree <span style=color:#f92672>=</span> MerkleTree::construct(<span style=color:#f92672>&amp;</span>input[<span style=color:#f92672>..</span>]);
+</span></span><span style=display:flex><span>        assert_eq!(tree.root.is_some(), <span style=color:#66d9ef>false</span>)
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>#[test]</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>test_construct_populated_tree</span>() {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>let</span> input <span style=color:#f92672>=</span> [vec![<span style=color:#ae81ff>0x41</span><span style=color:#66d9ef>u8</span>], vec![<span style=color:#ae81ff>0x42</span><span style=color:#66d9ef>u8</span>], vec![<span style=color:#ae81ff>0x43</span><span style=color:#66d9ef>u8</span>], vec![<span style=color:#ae81ff>0x44</span><span style=color:#66d9ef>u8</span>]];
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>let</span> tree <span style=color:#f92672>=</span> MerkleTree::construct(<span style=color:#f92672>&amp;</span>input[<span style=color:#f92672>..</span>]);
+</span></span><span style=display:flex><span>        assert_eq!(tree.root.is_some(), <span style=color:#66d9ef>true</span>)
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>#[test]</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>test_verify_root_hash</span>() {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>let</span> input <span style=color:#f92672>=</span> [vec![<span style=color:#ae81ff>0x41</span><span style=color:#66d9ef>u8</span>], vec![<span style=color:#ae81ff>0x42</span><span style=color:#66d9ef>u8</span>], vec![<span style=color:#ae81ff>0x43</span><span style=color:#66d9ef>u8</span>], vec![<span style=color:#ae81ff>0x44</span><span style=color:#66d9ef>u8</span>]];
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>let</span> expected_root_hash <span style=color:#f92672>=</span> vec![
+</span></span><span style=display:flex><span>            <span style=color:#ae81ff>223</span><span style=color:#66d9ef>u8</span>, <span style=color:#ae81ff>64</span><span style=color:#66d9ef>u8</span>, <span style=color:#ae81ff>230</span><span style=color:#66d9ef>u8</span>, <span style=color:#ae81ff>210</span><span style=color:#66d9ef>u8</span>, <span style=color:#ae81ff>176</span><span style=color:#66d9ef>u8</span>, <span style=color:#ae81ff>51</span><span style=color:#66d9ef>u8</span>, <span style=color:#ae81ff>54</span><span style=color:#66d9ef>u8</span>, <span style=color:#ae81ff>162</span><span style=color:#66d9ef>u8</span>, <span style=color:#ae81ff>150</span><span style=color:#66d9ef>u8</span>, <span style=color:#ae81ff>30</span><span style=color:#66d9ef>u8</span>, <span style=color:#ae81ff>243</span><span style=color:#66d9ef>u8</span>, <span style=color:#ae81ff>139</span><span style=color:#66d9ef>u8</span>, <span style=color:#ae81ff>43</span><span style=color:#66d9ef>u8</span>,
+</span></span><span style=display:flex><span>            <span style=color:#ae81ff>100</span><span style=color:#66d9ef>u8</span>, <span style=color:#ae81ff>76</span><span style=color:#66d9ef>u8</span>, <span style=color:#ae81ff>36</span><span style=color:#66d9ef>u8</span>, <span style=color:#ae81ff>99</span><span style=color:#66d9ef>u8</span>, <span style=color:#ae81ff>18</span><span style=color:#66d9ef>u8</span>, <span style=color:#ae81ff>6</span><span style=color:#66d9ef>u8</span>, <span style=color:#ae81ff>191</span><span style=color:#66d9ef>u8</span>, <span style=color:#ae81ff>23</span><span style=color:#66d9ef>u8</span>, <span style=color:#ae81ff>251</span><span style=color:#66d9ef>u8</span>, <span style=color:#ae81ff>152</span><span style=color:#66d9ef>u8</span>, <span style=color:#ae81ff>245</span><span style=color:#66d9ef>u8</span>, <span style=color:#ae81ff>123</span><span style=color:#66d9ef>u8</span>, <span style=color:#ae81ff>192</span><span style=color:#66d9ef>u8</span>,
+</span></span><span style=display:flex><span>            <span style=color:#ae81ff>125</span><span style=color:#66d9ef>u8</span>, <span style=color:#ae81ff>123</span><span style=color:#66d9ef>u8</span>, <span style=color:#ae81ff>87</span><span style=color:#66d9ef>u8</span>, <span style=color:#ae81ff>54</span><span style=color:#66d9ef>u8</span>, <span style=color:#ae81ff>209</span><span style=color:#66d9ef>u8</span>, <span style=color:#ae81ff>84</span><span style=color:#66d9ef>u8</span>,
+</span></span><span style=display:flex><span>        ];
+</span></span><span style=display:flex><span>        assert_eq!(MerkleTree::verify(<span style=color:#f92672>&amp;</span>input[<span style=color:#f92672>..</span>], <span style=color:#f92672>&amp;</span>expected_root_hash), <span style=color:#66d9ef>true</span>)
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></div><div class=post-footer><div class=info></div></div></div></div></div></main></div><footer class="footer footer--base"><div class=by_farbox><ul class=footer__list><li class=footer__item>&copy;
+pyhrr0
+2023</li></ul></div></footer><script type=text/javascript src=/js/medium-zoom.min.44288fd315b6cda68c1f4743caad56535c0f81a5b5a672f385e82b3896575c1d.js integrity="sha256-RCiP0xW2zaaMH0dDyq1WU1wPgaW1pnLzhegrOJZXXB0=" crossorigin=anonymous></script></body></html>
