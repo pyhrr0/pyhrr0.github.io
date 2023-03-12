@@ -1,5 +1,5 @@
 ---
-title: "Rust polymorphism"
+title: "Rust: polymorphism"
 date: 2023-02-03T13:33:37Z
 ---
 

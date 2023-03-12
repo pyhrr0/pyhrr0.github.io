@@ -1,5 +1,5 @@
 ---
-title: "Rust's ownership model"
+title: "Rust: ownership model"
 date: 2023-01-28T13:33:37Z
 ---
 

@@ -56,13 +56,14 @@ Install Arch Linux
    ```console
    # pacman -Sy reflector
    # reflector --country=<country_name> > /etc/pacman.d/mirrorlist
+   # pacman -Sy archlinux-keyring
    # pacstrap /mnt base linux linux-firmware intel-ucode <any_other_desired_package_name>
    # genfstab -U /mnt >> /mnt/etc/fstab
    # arch-chroot /mnt
    # ln -sf /usr/share/zoneinfo/<Region>/<City> /etc/localtime
    # hwclock --systohc
+   # echo 'LANG=en_US.UTF-8' > /etc/locale.gen
    # locale-gen
-   # echo 'LANG=en_US.UTF-8' > /etc/locale.conf
    # echo '<DESIRED_HOSTNAME>' > /etc/hostname
    ```
 Configure bootloader
@@ -92,17 +93,30 @@ Configure bootloader
    # mkinitcpio -p linux
    ```
 
+4) User-specific commands.
+   ```console
+   # useradd -m username -G wheel,audio,video
+   # passwd username
+   $ wal --theme base16-gruvbox-hard
+   ```
+
 Final bits
 ----------
 1) Install desired files in `/etc`:
-  - /etc/proxychains.conf
+  - /etc/fstab (add tmpfs)
   - /etc/iptables/iptables.rules
-  - /etc/systemd/resolved.conf
-  - /etc/wpa_supplicant/wpa_supplicant-<device_name>.conf
+  - /etc/pacman.conf
+  - /etc/privoxy/config
+  - /etc/proxychains.conf
+  - /etc/resolv.conf
+  - /etc/sudoers
   - /etc/systemd/network/10-wifi.link
   - /etc/systemd/network/10-wifi.network
-  - /etc/privoxy/config
-  - /etc/fstab (add tmpfs)
+  - /etc/systemd/network/10-wired.link
+  - /etc/systemd/network/10-wired.network
+  - /etc/systemd/resolved.conf
+  - /etc/tlp.conf
+  - /etc/wpa_supplicant/wpa_supplicant-<device_name>.conf
 
 2) Enable desired unit files:
    ```console

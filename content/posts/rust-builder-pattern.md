@@ -1,5 +1,5 @@
 ---
-title: "Rust builder pattern"
+title: "Rust: builder pattern"
 date: 2023-02-07T13:33:37Z
 ---
 The Builder pattern is a creational design pattern that allows for the creation of

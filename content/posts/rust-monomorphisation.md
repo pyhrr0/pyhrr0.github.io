@@ -1,5 +1,5 @@
 ---
-title: "Rust monomorphisation"
+title: "Rust: monomorphisation"
 date: 2023-02-04T13:33:37Z
 ---
 

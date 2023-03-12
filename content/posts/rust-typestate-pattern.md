@@ -1,5 +1,5 @@
 ---
-title: "Rust typestate pattern"
+title: "Rust: typestate pattern"
 date: 2023-02-25T13:33:37Z
 ---
 
