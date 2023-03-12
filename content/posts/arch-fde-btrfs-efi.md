@@ -16,9 +16,9 @@ Disk preparations
 2) Create / initialize usable LUKS container (and accompanying volumes):
     ```console
     # cryptsetup luksFormat /dev/sda2
-    # cryptsetup open /dev/sda2 luks_container
-    # pvcreate /dev/mapper/luks_container
-    # vgcreate encrypted /dev/mapper/luks_container
+    # cryptsetup open /dev/sda2 luks
+    # pvcreate /dev/mapper/luks
+    # vgcreate encrypted /dev/mapper/luks
     # lvcreate -l 100%FREE encrypted -n rootfs
     ```
 3) Create filesystems and mount partitions:
@@ -66,14 +66,10 @@ Install Arch Linux
    # locale-gen
    # echo '<DESIRED_HOSTNAME>' > /etc/hostname
    ```
-Configure bootloader
---------------------
-1) Install `systemd-boot` to `/boot` partition:
+
+3) Install & configure bootloader
    ```console
    # bootctl --path=/boot install
-   ```
-2) Configure the bootloader:
-   ```console
    # cat <<EOF > /boot/loader/loader.conf
    > default arch.conf
    > timeout 0
@@ -84,26 +80,27 @@ Configure bootloader
    > linux /vmlinuz-linux
    > initrd /intel-ucode.img
    > initrd /initramfs-linux.img
-   > options rd.luks.name=<UUID_OF_SDA2_FS>=luks_container root=/dev/mapper/encrypted-rootfs rootflags=subvol=@ rd.luks.options=discard ipv6.disable=1
+   > options rd.luks.name=<UUID_OF_SDA2_FS>=luks root=/dev/mapper/encrypted-rootfs rootflags=subvol=@ rd.luks.options=discard ipv6.disable=1
    > EOF
    ```
-3) Generate initramfs:
+4) Generate initramfs:
    ```console
    # sed -i 's/^HOOKS=.*$/HOOKS=(base systemd autodetect modconf keyboard block sd-encrypt lvm2 filesystems fsck)/' /etc/mkinitcpio.conf
    # mkinitcpio -p linux
    ```
 
-4) User-specific commands.
+Final bits
+----------
+
+1) User-specific commands.
    ```console
    # useradd -m username -G wheel,audio,video
    # passwd username
    $ wal --theme base16-gruvbox-hard
    ```
 
-Final bits
-----------
-1) Install desired files in `/etc`:
-  - /etc/fstab (add tmpfs)
+2) Install desired files in `/etc`:
+  - /etc/fstab (add tmpfs & correct [f|d]mask of /boot)
   - /etc/iptables/iptables.rules
   - /etc/pacman.conf
   - /etc/privoxy/config
@@ -118,15 +115,16 @@ Final bits
   - /etc/tlp.conf
   - /etc/wpa_supplicant/wpa_supplicant-<device_name>.conf
 
-2) Enable desired unit files:
+3) Manage unit files:
    ```console
-   # systemctl enable --now fstrim.timer
-   # systemctl enable --now btrfs-scrub@-.timer
-   # systemctl enable --now systemd-networkd.service
-   # systemctl enable --now systemd-resolved.service
-   # systemctl enable --now systemd-timesyncd.service
-   # systemctl enable --now wpa_supplicant@<device_name>.service
-   # systemctl enable --now iptables.service
-   # systemctl enable --now privoxy.service
-   # systemctl enable --now tlp.service
+   # systemctl enable fstrim.timer
+   # systemctl enable btrfs-scrub@-.timer
+   # systemctl enable systemd-networkd.service
+   # systemctl enable systemd-resolved.service
+   # systemctl enable systemd-timesyncd.service
+   # systemctl enable wpa_supplicant@<device_name>.service
+   # systemctl enable iptables.service
+   # systemctl enable privoxy.service
+   # systemctl enable tlp.service
+   # systemctl disable bluetooth.service
    ```
