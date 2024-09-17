@@ -25,7 +25,7 @@ url = "https://gitlab.com/pyhrr0"
 [[params.socialIcons]]
 icon = "fab fa-linkedin"
 title = "Linkedin"
-url = "https://linkedin.com/in/5f-42c-21f-749f2a39c"
+url = "https://linkedin.com/in/pyhrr0"
 
 [menu]
   [[menu.main]]
@@ -41,7 +41,7 @@ url = "https://linkedin.com/in/5f-42c-21f-749f2a39c"
   [[menu.main]]
   name = "Resume"
   weight = 300
-  url = "/cv"
+  url = "/resume"
 
   [[menu.main]]
   name = "Contact"
