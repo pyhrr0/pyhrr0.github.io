@@ -1,14 +1,42 @@
-<!doctype html><html dir=ltr lang=en data-theme><head><title>pyhrr0
+<!doctype html><html dir=ltr lang=en data-theme class="html theme--light"><head>
+<meta charset=utf-8>
+<title>
+pyhrr0
 |
 ELI5: Taproot activation
-</title><meta charset=utf-8><meta name=generator content="Hugo 0.123.4"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name=description content="
-      Yet another inquisitive creature.
-
-
-    "><link rel=stylesheet href=/css/main.min.beb4ded4d3d7b57eaaf7abaedb95860a68a8e8c2320b688e547ba30ead224a19.css integrity="sha256-vrTe1NPXtX6q96uu25WGCmio6MIyC2iOVHujDq0iShk=" crossorigin=anonymous type=text/css><link rel=stylesheet href=/css/markupHighlight.min.058b31f17db60602cc415fd63b0427e7932fbf35c70d8e341a4c39385f5f6f3e.css integrity="sha256-BYsx8X22BgLMQV/WOwQn55MvvzXHDY40Gkw5OF9fbz4=" crossorigin=anonymous type=text/css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin=anonymous><link rel="shortcut icon" href=/favicon.ico type=image/x-icon><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=canonical href=/posts/taproot/><script type=text/javascript src=/js/anatole-header.min.d0408165d31a17f17bba83038bf54e86121f85021bdf936382e636f0f77a952f.js integrity="sha256-0ECBZdMaF/F7uoMDi/VOhhIfhQIb35NjguY28Pd6lS8=" crossorigin=anonymous></script><script type=text/javascript src=/js/anatole-theme-switcher.min.ea8ebe268922ef9849261a1312cd65b640595e65251ce4c00534a176afd1ac0c.js integrity="sha256-6o6+Joki75hJJhoTEs1ltkBZXmUlHOTABTShdq/RrAw=" crossorigin=anonymous></script><meta name=twitter:card content="summary"><meta name=twitter:title content="ELI5: Taproot activation"><meta name=twitter:description content="The aim of this post is to provide a brief summary, of the implications that come with the adoption of Bitcoin&rsquo;s recent Taproot softfork. Its aim is to optimize Bitcoin&rsquo;s
+</title>
+<meta name=generator content="Hugo 0.88.0"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name=author content="pyhrr0">
+<meta name=description content="Yet another inquisitive creature.">
+<link rel=stylesheet href=/scss/main.min.afcf7a74c48633d6afc6447bf52d6af2c1bbc24b0cb0ce6d834cc98f49bfba77.css integrity="sha256-r896dMSGM9avxkR79S1q8sG7wksMsM5tg0zJj0m/unc=" crossorigin=anonymous type=text/css>
+<link rel=stylesheet href=/css/markupHighlight.min.73ccfdf28df555e11009c13c20ced067af3cb021504cba43644c705930428b00.css integrity="sha256-c8z98o31VeEQCcE8IM7QZ688sCFQTLpDZExwWTBCiwA=" crossorigin=anonymous type=text/css>
+<link rel=stylesheet href=/fontawesome/css/fontawesome.min.137b1cf3cea9a8adb7884343a9a5ddddf4280f59153f74dc782fb7f7bf0d0519.css integrity="sha256-E3sc886pqK23iENDqaXd3fQoD1kVP3TceC+3978NBRk=" crossorigin=anonymous type=text/css>
+<link rel=stylesheet href=/fontawesome/css/solid.min.e65dc5b48fb5f39b142360c57c3a215744c94e56c755c929cc3e88fe12aab4d3.css integrity="sha256-5l3FtI+185sUI2DFfDohV0TJTlbHVckpzD6I/hKqtNM=" crossorigin=anonymous type=text/css>
+<link rel=stylesheet href=/fontawesome/css/regular.min.6f4f16d58da1c82c0c3a3436e021a3d39b4742f741192c546e73e947eacfd92f.css integrity="sha256-b08W1Y2hyCwMOjQ24CGj05tHQvdBGSxUbnPpR+rP2S8=" crossorigin=anonymous type=text/css>
+<link rel=stylesheet href=/fontawesome/css/brands.min.e10425ad768bc98ff1fb272a0ac8420f9d1ba22f0612c08ff1010c95080ffe7e.css integrity="sha256-4QQlrXaLyY/x+ycqCshCD50boi8GEsCP8QEMlQgP/n4=" crossorigin=anonymous type=text/css>
+<link rel="shortcut icon" href=/favicon.ico type=image/x-icon>
+<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
+<link rel=canonical href=https://pyhrr0.github.io/posts/taproot/>
+<script type=text/javascript src=/js/anatole-header.min.46e6a54097480084f8f52c20ca1aa7425b4fad17029a887fd4017b12e311a72d.js integrity="sha256-RualQJdIAIT49SwgyhqnQltPrRcCmoh/1AF7EuMRpy0=" crossorigin=anonymous></script>
+<script type=text/javascript src=/js/anatole-theme-switcher.min.4c31f3cf7e8e609c897dba88aecac0e8db1ebb4e5c841d3f9ffb01d463973678.js integrity="sha256-TDHzz36OYJyJfbqIrsrA6Nseu05chB0/n/sB1GOXNng=" crossorigin=anonymous></script>
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="ELI5: Taproot activation">
+<meta name=twitter:description content="The aim of this post is to provide a brief summary, of the implications that come with the adoption of Bitcoin&rsquo;s recent Taproot softfork. Its aim is to optimize Bitcoin&rsquo;s
 scalability, privacy, and smart contract functionality.
 I got to learn about the nitty gritty details that are involved with the Bitcoin protocol whilst working for Bitonic, a BTCEUR exchange with proper moral values. Do note,
-I can&rsquo;t stress enough the importance of the DYOR (Do Your Own Research) idiom."><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","articleSection":"posts","name":"ELI5: Taproot activation","headline":"ELI5: Taproot activation","alternativeHeadline":"","description":"
+I can&rsquo;t stress enough the importance of the DYOR (Do Your Own Research) idiom.">
+<meta property="og:title" content="ELI5: Taproot activation">
+<meta property="og:description" content="The aim of this post is to provide a brief summary, of the implications that come with the adoption of Bitcoin&rsquo;s recent Taproot softfork. Its aim is to optimize Bitcoin&rsquo;s
+scalability, privacy, and smart contract functionality.
+I got to learn about the nitty gritty details that are involved with the Bitcoin protocol whilst working for Bitonic, a BTCEUR exchange with proper moral values. Do note,
+I can&rsquo;t stress enough the importance of the DYOR (Do Your Own Research) idiom.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://pyhrr0.github.io/posts/taproot/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2021-12-08T13:33:37+00:00">
+<meta property="article:modified_time" content="2021-12-08T13:33:37+00:00"><meta property="og:site_name" content="Pyhrr0">
+<script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","articleSection":"posts","name":"ELI5: Taproot activation","headline":"ELI5: Taproot activation","alternativeHeadline":"","description":"
       
         The aim of this post is to provide a brief summary, of the implications that come with the adoption of Bitcoin\u0026rsquo;s recent Taproot softfork. Its aim is to optimize Bitcoin\u0026rsquo;s\nscalability, privacy, and smart contract functionality.\nI got to learn about the nitty gritty details that are involved with the Bitcoin protocol whilst working for Bitonic, a BTCEUR exchange with proper moral values. Do note,\nI can\u0026rsquo;t stress enough the importance of the DYOR (Do Your Own Research) idiom.
 
@@ -16,18 +44,146 @@ I can&rsquo;t stress enough the importance of the DYOR (Do Your Own Research) id
       
 
 
-    ","inLanguage":"en-us","isFamilyFriendly":"true","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/pyhrr0.github.io\/posts\/taproot\/"},"author":{"@type":"Person","name":"pyhrr0"},"creator":{"@type":"Person","name":"pyhrr0"},"accountablePerson":{"@type":"Person","name":"pyhrr0"},"copyrightHolder":{"@type":"Person","name":"pyhrr0"},"copyrightYear":"2021","dateCreated":"2021-12-08T13:33:37.00Z","datePublished":"2021-12-08T13:33:37.00Z","dateModified":"2021-12-08T13:33:37.00Z","publisher":{"@type":"Organization","name":"pyhrr0","url":"https://pyhrr0.github.io/","logo":{"@type":"ImageObject","url":"https:\/\/pyhrr0.github.io\/favicon-32x32.png","width":"32","height":"32"}},"image":[],"url":"https:\/\/pyhrr0.github.io\/posts\/taproot\/","wordCount":"205","genre":[],"keywords":[]}</script></head><body><header><div class="page-top
-animated fadeInDown"><a role=button class=navbar-burger data-target=navMenu aria-label=menu aria-expanded=false><span aria-hidden=true></span>
-<span aria-hidden=true></span>
-<span aria-hidden=true></span></a><nav><ul class=nav__list id=navMenu><div class=nav__links><li><a href=/ title>Home</a></li><li><a href=/posts title>Posts</a></li><li><a href=/cv title>Resume</a></li><li><a href=/contact title>Contact</a></li></div><ul><li><a class=theme-switch title="Switch Theme"><i class="fas fa-adjust fa-fw" aria-hidden=true></i></a></li></ul></ul></nav></div></header><div class=wrapper><aside><div class="sidebar
-animated fadeInDown"><div class=sidebar__content><div class=logo-title><div class=title><img src=/images/logo.jpg alt="profile picture"><h3 title><a href=/>Pyhrr0</a></h3><div class=description><p>Yet another inquisitive creature.</p></div></div></div><ul class=social-links><li><a href=https://github.com/pyhrr0 rel=me aria-label=GitHub title=GitHub><i class="fab fa-github fa-2x" aria-hidden=true></i></a></li><li><a href=https://gitlab.com/pyhrr0 rel=me aria-label=Gitlab title=Gitlab><i class="fab fa-gitlab fa-2x" aria-hidden=true></i></a></li><li><a href=https://linkedin.com/in/5f-42c-21f-749f2a39c rel=me aria-label=Linkedin title=Linkedin><i class="fab fa-linkedin fa-2x" aria-hidden=true></i></a></li></ul></div><footer class="footer footer--sidebar"><div class=by_farbox><ul class=footer__list><li class=footer__item>&copy;
+    ","inLanguage":"en-us","isFamilyFriendly":"true","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/pyhrr0.github.io\/posts\/taproot\/"},"author":{"@type":"Person","name":"pyhrr0"},"creator":{"@type":"Person","name":"pyhrr0"},"accountablePerson":{"@type":"Person","name":"pyhrr0"},"copyrightHolder":{"@type":"Person","name":"pyhrr0"},"copyrightYear":"2021","dateCreated":"2021-12-08T13:33:37.00Z","datePublished":"2021-12-08T13:33:37.00Z","dateModified":"2021-12-08T13:33:37.00Z","publisher":{"@type":"Organization","name":"pyhrr0","url":"https://pyhrr0.github.io/","logo":{"@type":"ImageObject","url":"https:\/\/pyhrr0.github.io\/favicon-32x32.png","width":"32","height":"32"}},"image":[],"url":"https:\/\/pyhrr0.github.io\/posts\/taproot\/","wordCount":"205","genre":[],"keywords":[]}</script>
+</head>
+<body class=body>
+<div class=wrapper>
+<aside class=wrapper__sidebar><div class="sidebar
+animated fadeInDown">
+<div class=sidebar__content>
+<div class=sidebar__introduction>
+<img class=sidebar__introduction-profileimage src=/images/logo.jpg alt="profile picture">
+<div class=sidebar__introduction-title>
+<a href=/>Pyhrr0</a>
+</div>
+<div class=sidebar__introduction-description>
+<p>Yet another inquisitive creature.</p>
+</div>
+</div>
+<ul class=sidebar__list>
+<li class=sidebar__list-item>
+<a href=https://github.com/pyhrr0 target=_blank rel="noopener me" aria-label=GitHub title=GitHub>
+<i class="fab fa-github fa-2x" aria-hidden=true></i>
+</a>
+</li>
+<li class=sidebar__list-item>
+<a href=https://gitlab.com/pyhrr0 target=_blank rel="noopener me" aria-label=Gitlab title=Gitlab>
+<i class="fab fa-gitlab fa-2x" aria-hidden=true></i>
+</a>
+</li>
+<li class=sidebar__list-item>
+<a href=https://linkedin.com/in/pyhrr0 target=_blank rel="noopener me" aria-label=Linkedin title=Linkedin>
+<i class="fab fa-linkedin fa-2x" aria-hidden=true></i>
+</a>
+</li>
+</ul>
+</div><footer class="footer footer__sidebar">
+<ul class=footer__list>
+<li class=footer__item>
+&copy;
 pyhrr0
-2024</li></ul></div></footer><script type=text/javascript src=/js/medium-zoom.min.44288fd315b6cda68c1f4743caad56535c0f81a5b5a672f385e82b3896575c1d.js integrity="sha256-RCiP0xW2zaaMH0dDyq1WU1wPgaW1pnLzhegrOJZXXB0=" crossorigin=anonymous></script></div></aside><main><div class=autopagerize_page_element><div class=content><div class="post
-animated fadeInDown"><div class=post-content><div class=post-title><h1>ELI5: Taproot activation</h1></div><p>The aim of this post is to provide a brief summary, of the implications that come with
-the adoption of Bitcoin&rsquo;s recent Taproot softfork. Its aim is to optimize Bitcoin&rsquo;s<br>scalability, privacy, and smart contract functionality.</p><p>I got to learn about the nitty gritty details that are involved with the Bitcoin
-protocol whilst working for Bitonic, a BTCEUR exchange with proper moral values. Do note,<br>I can&rsquo;t stress enough the importance of the DYOR (Do Your Own Research) idiom.</p><p>The softfork introduces a new address type (P2TR), that aims to:</p><ul><li>Reduce the size of complex transactions.<ul><li>This improves Bitcoin&rsquo;s scalability.</li></ul></li><li>Complex transactions will be (in most cases) indistinguishable from simple ones.<ul><li>This improves Bitcoin&rsquo;s transactional privacy.</li></ul></li><li>Support for more complex transactions.<ul><li>Better smart contract functionality.</li></ul></li></ul><p>Spending conditions of these &lsquo;complex transactions&rsquo; could be:</p><ul><li>Transactions that originate from multisignature addresses (aka wallets that are owned
-by multiple parties).<ul><li>&ldquo;Only transact if child AND /both/ parents agree.&rdquo;</li></ul></li><li>Transactions with, one or more timelocked spending condition(s).<ul><li>&ldquo;Only transact if child reaches the age of 21.&rdquo;</li></ul></li><li>Transactions that combine the features stated above, accompanied by (optional)
-fallback condition(s).<ul><li>&ldquo;Only transact if child reaches the age of 18 AND /both/ parents agree, OR if child
-reaches the age of 21.&rdquo;</li></ul></li></ul></div><div class=post-footer><div class=info></div></div></div></div></div></main></div><footer class="footer footer--base"><div class=by_farbox><ul class=footer__list><li class=footer__item>&copy;
+2024
+</li>
+</ul>
+</footer>
+<script type=text/javascript src=/js/medium-zoom.min.fae9ac8895995fe91958b3954be11e96025824a04770726a3531e119ddd2d576.js integrity="sha256-+umsiJWZX+kZWLOVS+EelgJYJKBHcHJqNTHhGd3S1XY=" crossorigin=anonymous></script></div>
+</aside>
+<main class=wrapper__main>
+<header class=header><div class="animated fadeInDown">
+<a role=button class=navbar-burger data-target=navMenu aria-label=menu aria-expanded=false>
+<span aria-hidden=true class=navbar-burger__line></span>
+<span aria-hidden=true class=navbar-burger__line></span>
+<span aria-hidden=true class=navbar-burger__line></span>
+</a>
+<nav class=nav>
+<ul class=nav__list id=navMenu>
+<li class=nav__list-item>
+<a href=/ title>Home</a>
+</li>
+<li class=nav__list-item>
+<a href=/posts title>Posts</a>
+</li>
+<li class=nav__list-item>
+<a href=/resume title>Resume</a>
+</li>
+<li class=nav__list-item>
+<a href=/contact title>Contact</a>
+</li>
+</ul>
+<ul class="nav__list nav__list--end">
+<li class=nav__list-item>
+<div class=themeswitch>
+<a title="Switch Theme">
+<i class="fas fa-adjust fa-fw" aria-hidden=true></i>
+</a>
+</div>
+</li>
+</ul>
+</nav>
+</div>
+</header>
+<div class="post
+animated fadeInDown">
+<div class=post__content>
+<h1>ELI5: Taproot Activation</h1>
+<p>The aim of this post is to provide a brief summary, of the implications that come with
+the adoption of Bitcoin&rsquo;s recent Taproot softfork. Its aim is to optimize Bitcoin&rsquo;s<br>
+scalability, privacy, and smart contract functionality.</p>
+<p>I got to learn about the nitty gritty details that are involved with the Bitcoin
+protocol whilst working for Bitonic, a BTCEUR exchange with proper moral values. Do note,<br>
+I can&rsquo;t stress enough the importance of the DYOR (Do Your Own Research) idiom.</p>
+<p>The softfork introduces a new address type (P2TR), that aims to:</p>
+<ul>
+<li>Reduce the size of complex transactions.
+<ul>
+<li>This improves Bitcoin&rsquo;s scalability.</li>
+</ul>
+</li>
+<li>Complex transactions will be (in most cases) indistinguishable from simple ones.
+<ul>
+<li>This improves Bitcoin&rsquo;s transactional privacy.</li>
+</ul>
+</li>
+<li>Support for more complex transactions.
+<ul>
+<li>Better smart contract functionality.</li>
+</ul>
+</li>
+</ul>
+<p>Spending conditions of these &lsquo;complex transactions&rsquo; could be:</p>
+<ul>
+<li>Transactions that originate from multisignature addresses (aka wallets that are owned
+by multiple parties).
+<ul>
+<li>&ldquo;Only transact if child AND /both/ parents agree.&rdquo;</li>
+</ul>
+</li>
+<li>Transactions with, one or more timelocked spending condition(s).
+<ul>
+<li>&ldquo;Only transact if child reaches the age of 21.&rdquo;</li>
+</ul>
+</li>
+<li>Transactions that combine the features stated above, accompanied by (optional)
+fallback condition(s).
+<ul>
+<li>&ldquo;Only transact if child reaches the age of 18 AND /both/ parents agree, OR if child
+reaches the age of 21.&rdquo;</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class=post__footer>
+</div>
+</div>
+</main>
+</div><footer class="footer footer__base">
+<ul class=footer__list>
+<li class=footer__item>
+&copy;
 pyhrr0
-2024</li></ul></div></footer><script type=text/javascript src=/js/medium-zoom.min.44288fd315b6cda68c1f4743caad56535c0f81a5b5a672f385e82b3896575c1d.js integrity="sha256-RCiP0xW2zaaMH0dDyq1WU1wPgaW1pnLzhegrOJZXXB0=" crossorigin=anonymous></script></body></html>
+2024
+</li>
+</ul>
+</footer>
+<script type=text/javascript src=/js/medium-zoom.min.fae9ac8895995fe91958b3954be11e96025824a04770726a3531e119ddd2d576.js integrity="sha256-+umsiJWZX+kZWLOVS+EelgJYJKBHcHJqNTHhGd3S1XY=" crossorigin=anonymous></script></body>
+</html>
