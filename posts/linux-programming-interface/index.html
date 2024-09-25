@@ -1,0 +1,603 @@
+<!doctype html><html dir=ltr lang=en data-theme class="html theme--light"><head>
+<meta charset=utf-8>
+<title>
+pyhrr0
+|
+Linux Programming Interface
+</title>
+<meta name=generator content="Hugo 0.88.0"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name=author content="pyhrr0">
+<meta name=description content="Yet another inquisitive creature.">
+<link rel=stylesheet href=/scss/main.min.afcf7a74c48633d6afc6447bf52d6af2c1bbc24b0cb0ce6d834cc98f49bfba77.css integrity="sha256-r896dMSGM9avxkR79S1q8sG7wksMsM5tg0zJj0m/unc=" crossorigin=anonymous type=text/css>
+<link rel=stylesheet href=/css/markupHighlight.min.73ccfdf28df555e11009c13c20ced067af3cb021504cba43644c705930428b00.css integrity="sha256-c8z98o31VeEQCcE8IM7QZ688sCFQTLpDZExwWTBCiwA=" crossorigin=anonymous type=text/css>
+<link rel=stylesheet href=/fontawesome/css/fontawesome.min.137b1cf3cea9a8adb7884343a9a5ddddf4280f59153f74dc782fb7f7bf0d0519.css integrity="sha256-E3sc886pqK23iENDqaXd3fQoD1kVP3TceC+3978NBRk=" crossorigin=anonymous type=text/css>
+<link rel=stylesheet href=/fontawesome/css/solid.min.e65dc5b48fb5f39b142360c57c3a215744c94e56c755c929cc3e88fe12aab4d3.css integrity="sha256-5l3FtI+185sUI2DFfDohV0TJTlbHVckpzD6I/hKqtNM=" crossorigin=anonymous type=text/css>
+<link rel=stylesheet href=/fontawesome/css/regular.min.6f4f16d58da1c82c0c3a3436e021a3d39b4742f741192c546e73e947eacfd92f.css integrity="sha256-b08W1Y2hyCwMOjQ24CGj05tHQvdBGSxUbnPpR+rP2S8=" crossorigin=anonymous type=text/css>
+<link rel=stylesheet href=/fontawesome/css/brands.min.e10425ad768bc98ff1fb272a0ac8420f9d1ba22f0612c08ff1010c95080ffe7e.css integrity="sha256-4QQlrXaLyY/x+ycqCshCD50boi8GEsCP8QEMlQgP/n4=" crossorigin=anonymous type=text/css>
+<link rel="shortcut icon" href=/favicon.ico type=image/x-icon>
+<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
+<link rel=canonical href=https://pyhrr0.github.io/posts/linux-programming-interface/>
+<script type=text/javascript src=/js/anatole-header.min.46e6a54097480084f8f52c20ca1aa7425b4fad17029a887fd4017b12e311a72d.js integrity="sha256-RualQJdIAIT49SwgyhqnQltPrRcCmoh/1AF7EuMRpy0=" crossorigin=anonymous></script>
+<script type=text/javascript src=/js/anatole-theme-switcher.min.4c31f3cf7e8e609c897dba88aecac0e8db1ebb4e5c841d3f9ffb01d463973678.js integrity="sha256-TDHzz36OYJyJfbqIrsrA6Nseu05chB0/n/sB1GOXNng=" crossorigin=anonymous></script>
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="Linux Programming Interface">
+<meta name=twitter:description content="System Calls Process Control:  fork() - Creates a new child process by duplicating the calling process. execve() - Replaces the current process image with a new program. exit() - Terminates the calling process. wait(), waitpid() - Waits for state changes in a child process. getpid(), getppid() - Returns the process ID of the calling or parent process. getuid(), geteuid() - Gets the real and effective user ID of the calling process.">
+<meta property="og:title" content="Linux Programming Interface">
+<meta property="og:description" content="System Calls Process Control:  fork() - Creates a new child process by duplicating the calling process. execve() - Replaces the current process image with a new program. exit() - Terminates the calling process. wait(), waitpid() - Waits for state changes in a child process. getpid(), getppid() - Returns the process ID of the calling or parent process. getuid(), geteuid() - Gets the real and effective user ID of the calling process.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://pyhrr0.github.io/posts/linux-programming-interface/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2024-09-25T13:33:37+00:00">
+<meta property="article:modified_time" content="2024-09-25T13:33:37+00:00"><meta property="og:site_name" content="Pyhrr0">
+<script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","articleSection":"posts","name":"Linux Programming Interface","headline":"Linux Programming Interface","alternativeHeadline":"","description":"
+      
+        System Calls Process Control:  fork() - Creates a new child process by duplicating the calling process. execve() - Replaces the current process image with a new program. exit() - Terminates the calling process. wait(), waitpid() - Waits for state changes in a child process. getpid(), getppid() - Returns the process ID of the calling or parent process. getuid(), geteuid() - Gets the real and effective user ID of the calling process.
+
+
+      
+
+
+    ","inLanguage":"en-us","isFamilyFriendly":"true","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/pyhrr0.github.io\/posts\/linux-programming-interface\/"},"author":{"@type":"Person","name":"pyhrr0"},"creator":{"@type":"Person","name":"pyhrr0"},"accountablePerson":{"@type":"Person","name":"pyhrr0"},"copyrightHolder":{"@type":"Person","name":"pyhrr0"},"copyrightYear":"2024","dateCreated":"2024-09-25T13:33:37.00Z","datePublished":"2024-09-25T13:33:37.00Z","dateModified":"2024-09-25T13:33:37.00Z","publisher":{"@type":"Organization","name":"pyhrr0","url":"https://pyhrr0.github.io/","logo":{"@type":"ImageObject","url":"https:\/\/pyhrr0.github.io\/favicon-32x32.png","width":"32","height":"32"}},"image":[],"url":"https:\/\/pyhrr0.github.io\/posts\/linux-programming-interface\/","wordCount":"2210","genre":[],"keywords":[]}</script>
+</head>
+<body class=body>
+<div class=wrapper>
+<aside class=wrapper__sidebar><div class="sidebar
+animated fadeInDown">
+<div class=sidebar__content>
+<div class=sidebar__introduction>
+<img class=sidebar__introduction-profileimage src=/images/logo.jpg alt="profile picture">
+<div class=sidebar__introduction-title>
+<a href=/>Pyhrr0</a>
+</div>
+<div class=sidebar__introduction-description>
+<p>Yet another inquisitive creature.</p>
+</div>
+</div>
+<ul class=sidebar__list>
+<li class=sidebar__list-item>
+<a href=https://github.com/pyhrr0 target=_blank rel="noopener me" aria-label=GitHub title=GitHub>
+<i class="fab fa-github fa-2x" aria-hidden=true></i>
+</a>
+</li>
+<li class=sidebar__list-item>
+<a href=https://gitlab.com/pyhrr0 target=_blank rel="noopener me" aria-label=Gitlab title=Gitlab>
+<i class="fab fa-gitlab fa-2x" aria-hidden=true></i>
+</a>
+</li>
+<li class=sidebar__list-item>
+<a href=https://linkedin.com/in/pyhrr0 target=_blank rel="noopener me" aria-label=Linkedin title=Linkedin>
+<i class="fab fa-linkedin fa-2x" aria-hidden=true></i>
+</a>
+</li>
+</ul>
+</div><footer class="footer footer__sidebar">
+<ul class=footer__list>
+<li class=footer__item>
+&copy;
+pyhrr0
+2024
+</li>
+</ul>
+</footer>
+<script type=text/javascript src=/js/medium-zoom.min.fae9ac8895995fe91958b3954be11e96025824a04770726a3531e119ddd2d576.js integrity="sha256-+umsiJWZX+kZWLOVS+EelgJYJKBHcHJqNTHhGd3S1XY=" crossorigin=anonymous></script></div>
+</aside>
+<main class=wrapper__main>
+<header class=header><div class="animated fadeInDown">
+<a role=button class=navbar-burger data-target=navMenu aria-label=menu aria-expanded=false>
+<span aria-hidden=true class=navbar-burger__line></span>
+<span aria-hidden=true class=navbar-burger__line></span>
+<span aria-hidden=true class=navbar-burger__line></span>
+</a>
+<nav class=nav>
+<ul class=nav__list id=navMenu>
+<li class=nav__list-item>
+<a href=/ title>Home</a>
+</li>
+<li class=nav__list-item>
+<a href=/posts title>Posts</a>
+</li>
+<li class=nav__list-item>
+<a href=/resume title>Resume</a>
+</li>
+<li class=nav__list-item>
+<a href=/contact title>Contact</a>
+</li>
+</ul>
+<ul class="nav__list nav__list--end">
+<li class=nav__list-item>
+<div class=themeswitch>
+<a title="Switch Theme">
+<i class="fas fa-adjust fa-fw" aria-hidden=true></i>
+</a>
+</div>
+</li>
+</ul>
+</nav>
+</div>
+</header>
+<div class="post
+animated fadeInDown">
+<div class=post__content>
+<h1>Linux Programming Interface</h1>
+<h2 id=system-calls>System Calls</h2>
+<h3 id=process-control>Process Control:</h3>
+<ul>
+<li>fork() - Creates a new child process by duplicating the calling process.</li>
+<li>execve() - Replaces the current process image with a new program.</li>
+<li>exit() - Terminates the calling process.</li>
+<li>wait(), waitpid() - Waits for state changes in a child process.</li>
+<li>getpid(), getppid() - Returns the process ID of the calling or parent process.</li>
+<li>getuid(), geteuid() - Gets the real and effective user ID of the calling process.</li>
+<li>getgid(), getegid() - Gets the real and effective group ID.</li>
+<li>setuid(), seteuid() - Sets the user ID of the calling process.</li>
+<li>setgid(), setegid() - Sets the group ID.</li>
+<li>kill() - Sends a signal to a process or group of processes.</li>
+<li>nice() - Changes the scheduling priority of the process.</li>
+<li>ptrace() - Provides processes with the ability to observe and control other processes.</li>
+</ul>
+<h3 id=file-operations>File Operations</h3>
+<ul>
+<li>open(), openat() - Opens a file descriptor for a file.</li>
+<li>close() - Closes an open file descriptor.</li>
+<li>read() - Reads data from a file descriptor.</li>
+<li>write() - Writes data to a file descriptor.</li>
+<li>lseek() - Repositions the read/write file offset.</li>
+<li>pread(), pwrite() - Reads or writes data at a given offset without changing the file offset.</li>
+<li>stat(), fstat(), lstat() - Retrieves information about a file.</li>
+<li>chmod(), fchmod() - Changes the permissions of a file.</li>
+<li>chown(), fchown() - Changes the ownership of a file.</li>
+<li>unlink(), unlinkat() - Deletes a name from the filesystem.</li>
+<li>rename(), renameat() - Renames a file or directory.</li>
+<li>mkdir(), mkdirat() - Creates a new directory.</li>
+<li>rmdir() - Removes a directory.</li>
+<li>link(), symlink(), readlink() - Creates or reads symbolic and hard links.</li>
+<li>fsync(), fdatasync() - Synchronizes a file&rsquo;s in-memory state with storage device.</li>
+<li>dup(), dup2(), dup3() - Duplicates a file descriptor.</li>
+<li>fcntl() - Performs operations on file descriptors.</li>
+<li>ioctl() - Device-specific input/output control operations.</li>
+</ul>
+<h3 id=directory-operations>Directory Operations</h3>
+<ul>
+<li>opendir(), fdopendir() - Opens a directory stream.</li>
+<li>readdir() - Reads a directory entry.</li>
+<li>closedir() - Closes a directory stream.</li>
+<li>rewinddir() - Resets the position of the directory stream.</li>
+<li>scandir() - Scans a directory for matching entries.</li>
+<li>chdir() - Changes the current working directory.</li>
+<li>getcwd() - Retrieves the current working directory path.</li>
+</ul>
+<h3 id=memory-management>Memory Management</h3>
+<ul>
+<li>brk(), sbrk() - Changes the end of the data segment (allocates/deallocates memory).</li>
+<li>mmap(), munmap() - Maps or unmaps files or devices into memory.</li>
+<li>mprotect() - Changes protection on a region of memory.</li>
+<li>mlock(), munlock() - Locks or unlocks memory in RAM.</li>
+<li>shmat(), shmdt() - Attaches or detaches shared memory segments.</li>
+</ul>
+<h3 id=inter-process-communication-ipc>Inter-Process Communication (IPC)</h3>
+<h4 id=pipes-and-fifos>Pipes and FIFOs</h4>
+<ul>
+<li>pipe(), pipe2() - Creates a unidirectional data channel (pipe).</li>
+<li>mkfifo(), mkfifoat() - Creates a named pipe (FIFO).</li>
+</ul>
+<h4 id=message-queues>Message Queues</h4>
+<ul>
+<li>msgget() - Creates or accesses a message queue.</li>
+<li>msgsnd() - Sends a message to a queue.</li>
+<li>msgrcv() - Receives a message from a queue.</li>
+<li>msgctl() - Performs control operations on a message queue.</li>
+</ul>
+<h4 id=semaphores>Semaphores</h4>
+<ul>
+<li>semget() - Creates or accesses a semaphore set.</li>
+<li>semop() - Performs operations on semaphores.</li>
+<li>semctl() - Performs control operations on a semaphore set.</li>
+</ul>
+<h5 id=shared-memory>Shared Memory</h5>
+<ul>
+<li>shmget() - Allocates shared memory.</li>
+<li>shmat(), shmdt() - Attaches/detaches shared memory.</li>
+<li>shmctl() - Controls shared memory operations.</li>
+</ul>
+<h4 id=sockets>Sockets</h4>
+<ul>
+<li>socket() - Creates an endpoint for communication.</li>
+<li>bind() - Binds a name to a socket.</li>
+<li>listen() - Listens for socket connections.</li>
+<li>accept(), accept4() - Accepts a socket connection.</li>
+<li>connect() - Initiates a connection on a socket.</li>
+<li>send(), recv() - Sends/receives messages on a socket.</li>
+<li>sendto(), recvfrom() - Sends/receives messages to/from a socket.</li>
+<li>socketpair() - Creates a pair of connected sockets.</li>
+</ul>
+<h3 id=signals>Signals</h3>
+<ul>
+<li>signal(), sigaction() - Installs a signal handler.</li>
+<li>raise() - Sends a signal to the calling process.</li>
+<li>kill() - Sends a signal to a process.</li>
+<li>sigprocmask() - Examines or changes blocked signals.</li>
+<li>sigpending() - Checks for pending signals.</li>
+<li>sigsuspend() - Waits for a signal.</li>
+<li>sigwait() - Waits for signals in a set.</li>
+</ul>
+<h3 id=timers-and-clocks>Timers and Clocks</h3>
+<ul>
+<li>time() - Returns the current time.</li>
+<li>gettimeofday(), settimeofday() - Gets/sets the system time.</li>
+<li>clock_gettime(), clock_settime() - Accesses high-resolution clocks.</li>
+<li>nanosleep() - Suspends execution for a specified time.</li>
+<li>alarm() - Schedules a SIGALRM signal.</li>
+<li>setitimer(), getitimer() - Sets or gets the value of an interval timer.</li>
+<li>timer_create(), timer_delete(), timer_settime(), timer_gettime() - Manages POSIX timers.</li>
+</ul>
+<h3 id=resource-management>Resource Management</h3>
+<ul>
+<li>getrlimit(), setrlimit() - Gets or sets resource limits.</li>
+<li>getrusage() - Returns resource usage measures.</li>
+</ul>
+<h3 id=user-and-group-management>User and Group Management</h3>
+<ul>
+<li>getpwnam(), getpwuid() - Retrieves password file entries.</li>
+<li>getgrnam(), getgrgid() - Retrieves group database entries.</li>
+</ul>
+<h3 id=process-scheduling>Process Scheduling</h3>
+<ul>
+<li>sched_getscheduler(), sched_setscheduler() - Gets or sets the scheduling policy.</li>
+<li>sched_getparam(), sched_setparam() - Gets or sets scheduling parameters.</li>
+<li>sched_yield() - Yields the processor.</li>
+<li>sched_get_priority_max(), sched_get_priority_min() - Gets priority limits.</li>
+</ul>
+<h3 id=miscellaneous>Miscellaneous</h3>
+<ul>
+<li>uname() - Gets system information.</li>
+<li>sysinfo() - Retrieves system statistics.</li>
+<li>ptrace() - Traces processes (used for debugging).</li>
+<li>sysctl() - Reads or writes system parameters.</li>
+<li>umask() - Sets file mode creation mask.</li>
+</ul>
+<h2 id=standard-library-functions-glibc>Standard Library Functions (glibc)</h2>
+<h3 id=string-manipulation>String Manipulation</h3>
+<ul>
+<li>strlen(), strnlen() - Calculates the length of a string.</li>
+<li>strcpy(), strncpy() - Copies strings.</li>
+<li>strcat(), strncat() - Concatenates strings.</li>
+<li>strcmp(), strncmp() - Compares strings.</li>
+<li>strchr(), strrchr() - Locates characters in a string.</li>
+<li>strstr(), strcasestr() - Finds a substring.</li>
+<li>sprintf(), snprintf() - Writes formatted output to a string.</li>
+<li>sscanf() - Reads formatted input from a string.</li>
+</ul>
+<h3 id=memory-functions>Memory Functions</h3>
+<ul>
+<li>malloc(), calloc(), realloc(), free() - Allocates and manages dynamic memory.</li>
+<li>memcpy(), memmove() - Copies memory areas.</li>
+<li>memset() - Fills memory with a constant byte.</li>
+<li>memcmp() - Compares memory areas.</li>
+</ul>
+<h3 id=inputoutput>Input/Output</h3>
+<ul>
+<li>printf(), fprintf() - Prints formatted output.</li>
+<li>scanf(), fscanf() - Reads formatted input.</li>
+<li>getc(), fgetc(), getchar() - Reads a character from a file or stdin.</li>
+<li>putc(), fputc(), putchar() - Writes a character to a file or stdout.</li>
+<li>fgets() - Reads a string from a file.</li>
+<li>fputs(), puts() - Writes a string to a file or stdout.</li>
+<li>fopen(), freopen(), fdopen() - Opens a file stream.</li>
+<li>fclose() - Closes a file stream.</li>
+<li>fread(), fwrite() - Reads or writes data to/from a file.</li>
+<li>fseek(), ftell() - Repositions or obtains the position of the file pointer.</li>
+<li>fflush() - Flushes a file stream.</li>
+</ul>
+<h3 id=mathematical-functions>Mathematical Functions</h3>
+<ul>
+<li>abs(), labs(), llabs() - Computes absolute value.</li>
+<li>ceil(), floor() - Rounds a number up or down.</li>
+<li>sqrt(), cbrt() - Calculates square or cube roots.</li>
+<li>pow(), exp(), log(), log10() - Exponential and logarithmic functions.</li>
+<li>sin(), cos(), tan() - Trigonometric functions.</li>
+<li>asin(), acos(), atan(), atan2() - Inverse trigonometric functions.</li>
+</ul>
+<h3 id=system-utilities>System Utilities</h3>
+<ul>
+<li>system() - Executes a shell command.</li>
+<li>getenv(), putenv(), setenv(), unsetenv() - Gets or sets environment variables.</li>
+<li>getopt(), getopt_long() - Parses command-line options.</li>
+<li>exit(), _exit(), atexit() - Exits a program and registers functions to be called at exit.</li>
+<li>qsort(), bsearch() - Sorts and searches arrays.</li>
+</ul>
+<h3 id=date-and-time>Date and Time</h3>
+<ul>
+<li>time() - Gets the current time.</li>
+<li>ctime(), asctime() - Converts time to a string representation.</li>
+<li>localtime(), gmtime() - Converts time to broken-down time.</li>
+<li>mktime() - Converts broken-down time to time since the Epoch.</li>
+<li>strftime(), strptime() - Formats and parses date and time.</li>
+</ul>
+<h3 id=posix-threads-pthread>POSIX Threads (pthread)</h3>
+<h4 id=thread-management>Thread Management</h4>
+<ul>
+<li>pthread_create() - Creates a new thread.</li>
+<li>pthread_exit() - Terminates the calling thread.</li>
+<li>pthread_join() - Waits for thread termination.</li>
+<li>pthread_detach() - Marks a thread for detachment.</li>
+<li>pthread_self() - Returns the calling thread&rsquo;s ID.</li>
+<li>pthread_equal() - Compares thread IDs.</li>
+<li>pthread_cancel() - Sends a cancellation request to a thread.</li>
+<li>pthread_setcancelstate(), pthread_setcanceltype() - Sets thread cancellation state and type.</li>
+</ul>
+<h4 id=thread-attributes>Thread Attributes</h4>
+<ul>
+<li>pthread_attr_init(), pthread_attr_destroy() - Initializes/destroys thread attributes object.</li>
+<li>pthread_attr_setdetachstate(), pthread_attr_getdetachstate() - Sets/gets detach state.</li>
+<li>pthread_attr_setschedpolicy(), pthread_attr_getschedpolicy() - Sets/gets scheduling policy.</li>
+<li>pthread_attr_setschedparam(), pthread_attr_getschedparam() - Sets/gets scheduling parameters.</li>
+</ul>
+<h4 id=mutexes>Mutexes</h4>
+<ul>
+<li>pthread_mutex_init(), pthread_mutex_destroy() - Initializes/destroys a mutex.</li>
+<li>pthread_mutex_lock(), pthread_mutex_trylock(), pthread_mutex_unlock() - Locks/unlocks a mutex.</li>
+<li>pthread_mutexattr_init(), pthread_mutexattr_destroy() - Initializes/destroys mutex attribute object.</li>
+<li>pthread_mutexattr_settype(), pthread_mutexattr_gettype() - Sets/gets the mutex type.</li>
+</ul>
+<h4 id=condition-variables>Condition Variables</h4>
+<ul>
+<li>pthread_cond_init(), pthread_cond_destroy() - Initializes/destroys a condition variable.</li>
+<li>pthread_cond_wait(), pthread_cond_timedwait() - Waits on a condition variable.</li>
+<li>pthread_cond_signal(), pthread_cond_broadcast() - Signals a condition variable.</li>
+</ul>
+<h4 id=read-write-locks>Read-Write Locks</h4>
+<ul>
+<li>pthread_rwlock_init(), pthread_rwlock_destroy() - Initializes/destroys a read-write lock.</li>
+<li>pthread_rwlock_rdlock(), pthread_rwlock_wrlock(), pthread_rwlock_unlock() - Locks/unlocks a read-write lock.</li>
+</ul>
+<h4 id=thread-specific-data-tsd>Thread-Specific Data (TSD)</h4>
+<ul>
+<li>pthread_key_create(), pthread_key_delete() - Creates/deletes a thread-specific data key.</li>
+<li>pthread_setspecific(), pthread_getspecific() - Sets/gets thread-specific data.</li>
+</ul>
+<h4 id=barriers>Barriers</h4>
+<ul>
+<li>pthread_barrier_init(), pthread_barrier_destroy() - Initializes/destroys a barrier.</li>
+<li>pthread_barrier_wait() - Synchronizes threads at a barrier.</li>
+</ul>
+<h3 id=networking-sockets-api>Networking (Sockets API)</h3>
+<h4 id=socket-creation-and-configuration>Socket Creation and Configuration</h4>
+<ul>
+<li>socket() - Creates a socket.</li>
+<li>socketpair() - Creates a pair of connected sockets.</li>
+<li>bind() - Binds a socket to an address.</li>
+<li>listen() - Listens for connections on a socket.</li>
+<li>accept(), accept4() - Accepts a connection on a socket.</li>
+<li>connect() - Initiates a connection on a socket.</li>
+<li>getsockname(), getpeername() - Gets the local or remote address of a socket.</li>
+<li>getsockopt(), setsockopt() - Gets/sets options on sockets.</li>
+</ul>
+<h4 id=data-transmission>Data Transmission</h4>
+<ul>
+<li>send(), recv() - Sends/receives data on a socket.</li>
+<li>sendto(), recvfrom() - Sends/receives messages with addresses.</li>
+<li>sendmsg(), recvmsg() - Sends/receives messages with ancillary data.</li>
+<li>shutdown() - Disables sends or receives on a socket.</li>
+</ul>
+<h4 id=address-and-name-resolution>Address and Name Resolution</h4>
+<ul>
+<li>gethostbyname(), gethostbyaddr() - Gets host entry by name/address.</li>
+<li>getaddrinfo(), freeaddrinfo() - Translates hostnames and service names to socket addresses.</li>
+<li>inet_aton(), inet_addr(), inet_ntoa(), inet_ntop(), inet_pton() - Converts IP addresses between binary and text.</li>
+</ul>
+<h4 id=network-byte-order-conversion>Network Byte Order Conversion</h4>
+<ul>
+<li>htons(), htonl() - Converts values from host to network byte order.</li>
+<li>ntohs(), ntohl() - Converts values from network to host byte order.</li>
+</ul>
+<h3 id=inter-process-communication-advanced-ipc>Inter-Process Communication (Advanced IPC)</h3>
+<h4 id=event-mechanisms>Event Mechanisms</h4>
+<ul>
+<li>select(), pselect() - Monitors multiple file descriptors.</li>
+<li>poll(), ppoll() - Waits for events on file descriptors.</li>
+<li>epoll_create(), epoll_ctl(), epoll_wait(), epoll_pwait() - Scalable I/O event notification mechanisms.</li>
+</ul>
+<h4 id=inotify-filesystem-event-monitoring>Inotify (Filesystem Event Monitoring)</h4>
+<ul>
+<li>inotify_init(), inotify_init1() - Initializes inotify instance.</li>
+<li>inotify_add_watch(), inotify_rm_watch() - Adds/removes watches to monitor filesystem events.</li>
+</ul>
+<h4 id=signalfd>Signalfd</h4>
+<ul>
+<li>signalfd() - Creates a file descriptor for accepting signals.</li>
+</ul>
+<h4 id=timerfd>Timerfd</h4>
+<ul>
+<li>timerfd_create(), timerfd_settime(), timerfd_gettime() - Creates and manages timers that notify via file descriptors.</li>
+</ul>
+<h4 id=eventfd>Eventfd</h4>
+<ul>
+<li>eventfd(), eventfd_read(), eventfd_write() - Provides event notification mechanisms via file descriptors.</li>
+</ul>
+<h3 id=filesystem-interface>Filesystem Interface</h3>
+<h4 id=extended-attributes>Extended Attributes</h4>
+<ul>
+<li>setxattr(), getxattr() - Sets/gets extended attributes of files.</li>
+<li>listxattr(), removexattr() - Lists/removes extended attributes.</li>
+</ul>
+<h4 id=filesystem-operations>Filesystem Operations</h4>
+<ul>
+<li>mount(), umount(), umount2() - Mounts/unmounts filesystems.</li>
+<li>sync(), syncfs() - Synchronizes filesystem data on disk with memory.</li>
+<li>statvfs(), fstatvfs() - Retrieves filesystem statistics.</li>
+</ul>
+<h4 id=file-locking>File Locking</h4>
+<ul>
+<li>flock() - Applies or removes an advisory lock on an open file.</li>
+<li>fcntl() with locking commands (F_GETLK, F_SETLK, F_SETLKW) - Performs record locking operations.</li>
+</ul>
+<h3 id=device-and-terminal-control>Device and Terminal Control</h3>
+<h4 id=terminal-io-termios>Terminal I/O (termios)</h4>
+<ul>
+<li>tcgetattr(), tcsetattr() - Gets/sets terminal parameters.</li>
+<li>cfgetispeed(), cfsetispeed() - Gets/sets input baud rate.</li>
+<li>cfgetospeed(), cfsetospeed() - Gets/sets output baud rate.</li>
+<li>tcsendbreak() - Transmits a break.</li>
+<li>tcdrain() - Waits until all output is transmitted.</li>
+<li>tcflush() - Discards data written or received.</li>
+<li>tcflow() - Suspends/resumes data transmission or reception.</li>
+<li>tcgetsid() - Gets the session ID.</li>
+</ul>
+<h4 id=ioctl-commands>ioctl Commands</h4>
+<ul>
+<li>Various ioctl() commands - Device-specific operations (e.g., controlling hardware devices).</li>
+</ul>
+<h4 id=dynamic-linking-and-loading>Dynamic Linking and Loading</h4>
+<ul>
+<li>dlopen() - Opens a shared library.</li>
+<li>dlsym() - Looks up the address of a symbol.</li>
+<li>dlclose() - Closes a dynamic library.</li>
+<li>dlerror() - Returns error messages from dynamic linking.</li>
+</ul>
+<h3 id=real-time-extensions>Real-Time Extensions</h3>
+<h4 id=message-queues-1>Message Queues</h4>
+<ul>
+<li>mq_open(), mq_close() - Opens/closes a message queue.</li>
+<li>mq_unlink() - Removes a message queue.</li>
+<li>mq_send(), mq_receive() - Sends/receives messages.</li>
+<li>mq_notify() - Registers for message queue notification.</li>
+<li>mq_getattr(), mq_setattr() - Gets/sets message queue attributes.</li>
+</ul>
+<h4 id=semaphores-1>Semaphores</h4>
+<ul>
+<li>sem_open(), sem_close() - Opens/closes a named semaphore.</li>
+<li>sem_unlink() - Removes a named semaphore.</li>
+<li>sem_post(), sem_wait() - Increments/decrements a semaphore.</li>
+<li>sem_trywait(), sem_timedwait() - Non-blocking or timed semaphore operations.</li>
+<li>sem_getvalue() - Gets the semaphore value.</li>
+</ul>
+<h4 id=real-time-signals>Real-Time Signals</h4>
+<ul>
+<li>sigqueue() - Sends a signal with accompanying data.</li>
+</ul>
+<h3 id=capability-interfaces>Capability Interfaces</h3>
+<ul>
+<li>cap_get_proc(), cap_set_proc() - Gets/sets process capabilities.</li>
+<li>cap_init(), cap_free() - Initializes/frees capability data structures.</li>
+<li>cap_get_flag(), cap_set_flag() - Gets/sets capability flags.</li>
+</ul>
+<h3 id=advanced-memory-management>Advanced Memory Management</h3>
+<ul>
+<li>mlockall(), munlockall() - Locks/unlocks all pages mapped into the address space.</li>
+<li>madvise(), posix_madvise() - Advises kernel about memory usage patterns.</li>
+<li>mremap() - Remaps a virtual memory address.</li>
+<li>remap_file_pages() - Creates a nonlinear file mapping.</li>
+</ul>
+<h3 id=error-handling>Error Handling</h3>
+<h4 id=error-variables-and-functions>Error Variables and Functions</h4>
+<ul>
+<li>errno - Global variable indicating the error code.</li>
+<li>perror() - Prints a descriptive error message.</li>
+<li>strerror(), strerror_r() - Returns a string describing an error code.</li>
+<li>err(), warn() - Error handling functions for reporting.</li>
+</ul>
+<h3 id=atomic-operations>Atomic Operations</h3>
+<h4 id=built-in-functions>Built-in Functions</h4>
+<ul>
+<li>__sync_fetch_and_add(), __sync_fetch_and_sub() - Atomic arithmetic operations.</li>
+<li>__sync_lock_test_and_set(), __sync_lock_release() - Atomic test and set operations.</li>
+</ul>
+<h4 id=atomic-types-and-functions>Atomic Types and Functions</h4>
+<ul>
+<li>atomic_flag, atomic_bool, atomic_int, etc. - Atomic data types for thread-safe operations.</li>
+<li>atomic_thread_fence(), atomic_signal_fence() - Memory synchronization operations.</li>
+</ul>
+<h3 id=cryptographic-functions>Cryptographic Functions</h3>
+<ul>
+<li>crypt() - Performs password encryption.</li>
+<li>getentropy() - Obtains random data.</li>
+<li>getrandom() - Retrieves random bytes from the kernel random number generator.</li>
+</ul>
+<h3 id=locale-and-internationalization>Locale and Internationalization</h3>
+<ul>
+<li>setlocale() - Sets the program&rsquo;s locale.</li>
+<li>localeconv() - Gets locale-specific formatting information.</li>
+<li>nl_langinfo() - Retrieves information about language-specific settings.</li>
+</ul>
+<h3 id=threading-extensions>Threading Extensions</h3>
+<h4 id=thread-cancellation>Thread Cancellation</h4>
+<ul>
+<li>pthread_cancel() - Requests cancellation of a thread.</li>
+<li>pthread_setcancelstate(), pthread_setcanceltype() - Sets cancellation state/type.</li>
+</ul>
+<h4 id=spin-locks>Spin Locks</h4>
+<ul>
+<li>pthread_spin_init(), pthread_spin_destroy() - Initializes/destroys a spin lock.</li>
+<li>pthread_spin_lock(), pthread_spin_trylock(), pthread_spin_unlock() - Controls a spin lock.</li>
+</ul>
+<h4 id=thread-barriers>Thread Barriers</h4>
+<ul>
+<li>pthread_barrier_init(), pthread_barrier_destroy() - Initializes/destroys a barrier.</li>
+<li>pthread_barrier_wait() - Synchronizes threads at a barrier.</li>
+</ul>
+<h3 id=debugging-and-profiling>Debugging and Profiling</h3>
+<ul>
+<li>gprof() - Profiles program execution.</li>
+<li>mtrace(), muntrace() - Traces dynamic memory allocation.</li>
+<li>backtrace(), backtrace_symbols() - Obtains a backtrace (stack trace).</li>
+</ul>
+<h3 id=miscellaneous-functions>Miscellaneous Functions</h3>
+<h4 id=environment-and-configuration>Environment and Configuration</h4>
+<ul>
+<li>setreuid(), setregid() - Sets real and effective user/group IDs.</li>
+<li>getresuid(), getresgid() - Gets real, effective, and saved user/group IDs.</li>
+</ul>
+<h4 id=process-groups-and-sessions>Process Groups and Sessions</h4>
+<ul>
+<li>setsid(), getsid() - Creates/gets a session ID.</li>
+<li>setpgid(), getpgid(), getpgrp() - Sets/gets process group IDs.</li>
+</ul>
+<h4 id=resource-usage-and-limits>Resource Usage and Limits</h4>
+<ul>
+<li>prlimit() - Gets/sets resource limits.</li>
+</ul>
+<h4 id=random-number-generation>Random Number Generation</h4>
+<ul>
+<li>rand(), srand() - Generates pseudo-random numbers.</li>
+<li>random(), srandom(), initstate(), setstate() - Advanced random number functions.</li>
+</ul>
+<h4 id=file-system-information>File System Information</h4>
+<ul>
+<li>statfs(), fstatfs() - Gets file system statistics.</li>
+</ul>
+<h3 id=linux-specific-system-calls>Linux-Specific System Calls</h3>
+<ul>
+<li>clone() - Creates a new process with shared parts.</li>
+<li>unshare() - Disassociates parts of the process execution context.</li>
+<li>setns() - Joins an existing namespace.</li>
+<li>eventfd(), eventfd_read(), eventfd_write() - Provides event notification via file descriptors.</li>
+<li>signalfd() - Creates a file descriptor for accepting signals.</li>
+<li>fanotify_init(), fanotify_mark() - Monitors filesystem events.</li>
+</ul>
+<h3 id=namespace-and-control-groups-cgroups>Namespace and Control Groups (cgroups)</h3>
+<h4 id=namespace-operations>Namespace Operations</h4>
+<ul>
+<li>unshare() - Starts a new namespace.</li>
+<li>setns() - Enters a namespace.</li>
+</ul>
+<h4 id=control-groups-interfaces>Control Groups Interfaces</h4>
+<ul>
+<li>Interactions via filesystem API (e.g., reading/writing to /sys/fs/cgroup/) - Controls resource allocation and usage limits for process groups.</li>
+</ul>
+</div>
+<div class=post__footer>
+</div>
+</div>
+</main>
+</div><footer class="footer footer__base">
+<ul class=footer__list>
+<li class=footer__item>
+&copy;
+pyhrr0
+2024
+</li>
+</ul>
+</footer>
+<script type=text/javascript src=/js/medium-zoom.min.fae9ac8895995fe91958b3954be11e96025824a04770726a3531e119ddd2d576.js integrity="sha256-+umsiJWZX+kZWLOVS+EelgJYJKBHcHJqNTHhGd3S1XY=" crossorigin=anonymous></script></body>
+</html>
